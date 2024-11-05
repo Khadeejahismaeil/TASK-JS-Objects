@@ -12,10 +12,26 @@
  */
 function createBook(title, author, publishedYear, genre) {
   // write your code here...
-}
 
+  // return {
+  //   title: "JavaScript: The Definitive Guide",
+  //   author: "David Flanagan",
+  //   publishedYear: 2020,
+  //   genre: "Programming",
+  // };
+  return {
+    title,
+    author,
+    publishedYear,
+    genre,
+  };
+}
 // DO NOT CHANGE THE LINE OF CODE BELOW (you can use it for testing your code)
 const book = createBook();
+// "JavaScript: The Definitive Guide",
+// "David Flanagan",
+// 2020,
+// "Programming"
 
 /**
  * printBookTitleAndYear
@@ -27,6 +43,7 @@ const book = createBook();
  */
 function printBookTitleAndYear(book) {
   // write your code here...
+  return `${book.title} ${book["publishedYear"]}`;
 }
 
 /**
@@ -38,6 +55,8 @@ function printBookTitleAndYear(book) {
  */
 function addPageCount(book, pageCount) {
   // write your code here...
+  book.pageCount = pageCount;
+  return book;
 }
 
 /**
@@ -50,6 +69,8 @@ function addPageCount(book, pageCount) {
  */
 function addISBN(book, ISBN) {
   // write your code here...
+  book.ISBN = ISBN;
+  return book;
 }
 
 /**
@@ -62,6 +83,8 @@ function addISBN(book, ISBN) {
  */
 function updatePublishedYear(book, newYear) {
   // write your code here...
+  book.publishedYear = newYear;
+  return book;
 }
 
 /**
@@ -74,6 +97,8 @@ function updatePublishedYear(book, newYear) {
  */
 function addSecondAuthor(book, additionalAuthor) {
   // write your code here...
+  book.author = [book.author, additionalAuthor];
+  return book;
 }
 
 /**
@@ -90,6 +115,22 @@ function addSecondAuthor(book, additionalAuthor) {
  */
 function addReview(book, reviewer, comment) {
   // write your code here
+  // if (Array.isArray(book.reviews)) {
+  //   book.reviews.push({ reviewer: reviewer, comment: comment });
+  // } else {
+  //   book.reviewes = [{ reviewer, comment }];
+  // }
+  // return book;
+
+  //  Create review obj
+  const newReview = { reviewer, comment };
+
+  //  Add the new review to array if it exits
+  if (book.reviews) book.reviews.push(newReview);
+  //if the reviews array doesn't exist create a new array with the new reviews
+  else book.reviews = [newReview];
+
+  return book;
 }
 
 module.exports = {
